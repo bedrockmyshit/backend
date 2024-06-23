@@ -29,7 +29,10 @@ func (a *App) ListenAndServe(addr string, dev bool) error {
 // serverDirFunc serves files from the given directory.
 func serveDirFunc(dir string) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, dir+r.URL.Path)
+		path, ok := mux.Vars(r)["path"]
+		if ok {
+			http.ServeFile(w, r, dir+"/"+path)
+		}
 	}
 }
 
