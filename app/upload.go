@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func (a *App) upload(w http.ResponseWriter, r *http.Request) {
+func (a *App) port(w http.ResponseWriter, r *http.Request) {
 	_ = r.ParseMultipartForm(32 << 20) // limit your max input length!
 	var buf bytes.Buffer
 	// fileupload

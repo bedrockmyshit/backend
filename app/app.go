@@ -13,7 +13,7 @@ type App struct {
 }
 
 func (a *App) ListenAndServe(addr string, dev bool) error {
-	router.HandleFunc("/upload", a.upload).Methods("POST")
+	router.HandleFunc("/port", a.port).Methods("POST")
 	router.HandleFunc("/download", a.download).Queries("target", "{target}")
 	router.HandleFunc("/assets/{path}", serveDirFunc("./assets"))
 
