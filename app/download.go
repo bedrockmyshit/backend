@@ -117,6 +117,7 @@ func (a *App) download(w http.ResponseWriter, r *http.Request) {
 	}()
 
 	target := r.FormValue("target")
+	target = strings.ToLower(target)
 	if target == "" {
 		http.Error(w, "missing target", http.StatusBadRequest)
 		return
